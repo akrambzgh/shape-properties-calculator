@@ -1,0 +1,179 @@
+html {
+  font-size: 100%;
+  line-height: 1.4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  background-color: #f9f2ed;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button,
+input {
+  outline: none;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+main {
+  width: 80%;
+  margin-inline: auto;
+  background-color: #3ab0ff;
+  min-height: 96vh;
+  margin-top: 2vh;
+  padding: 15px;
+  border-radius: 30px;
+  box-shadow: 10px 5px 5px #1589d6;
+}
+main .shapes-lists {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+main .shapes-lists .towD,
+main .shapes-lists .threeD {
+  position: relative;
+}
+main .shapes-lists .towD h1,
+main .shapes-lists .threeD h1 {
+  font-size: 22px;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  color: #f9f2ed;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: #f87474;
+  cursor: pointer;
+}
+main .shapes-lists .towD ul,
+main .shapes-lists .threeD ul {
+  background-color: #ffb562;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 150%;
+  padding-block: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  transition: 300ms;
+}
+main .shapes-lists .towD ul li,
+main .shapes-lists .threeD ul li {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  width: 100%;
+  padding-left: 10px;
+  border-bottom: 1px solid #f9f2ed;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+main .shapes-lists .towD ul li img,
+main .shapes-lists .threeD ul li img {
+  justify-content: flex-end;
+}
+main .shapes-lists .towD ul li:last-child,
+main .shapes-lists .threeD ul li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+main .shapes-lists .towD ul li:first-child,
+main .shapes-lists .threeD ul li:first-child {
+  padding-top: 0;
+}
+main .towD-input-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  background-color: #f9f2ed;
+  border-radius: 15px;
+  width: 500px;
+  height: 500px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 3px solid #f87474;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+}
+main .towD-input-box label {
+  margin-bottom: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  color: #3ab0ff;
+}
+main .towD-input-box input {
+  width: 100%;
+  border-radius: 10px;
+  background: none;
+  border: 2px solid #ffb562;
+  padding: 13px;
+  display: block;
+  margin-bottom: 20px;
+  color: #ffb562;
+  font-size: 18px;
+  font-weight: 400;
+  caret-color: #ffb562;
+}
+main .towD-input-box input::placeholder {
+  color: #ffb562;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.overlayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+}
+
+/*# sourceMappingURL=styles.css.map */

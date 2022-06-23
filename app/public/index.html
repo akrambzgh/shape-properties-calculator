@@ -1,0 +1,56 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shapes Properties Calculator</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./dist/styles.css" />
+
+    <!-- JS -->
+    <script src="../src/js/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="shapes-lists">
+        <div class="towD">
+          <h1>2D Shapes</h1>
+          <ul class="towD-list">
+            <li class="towD-shape">Square <img src="../../images/square.svg" alt=""></li>
+            <li class="towD-shape">Circle <img src="../../images/circle.svg" alt=""></li>
+            <li class="towD-shape">Triangle <img src="../../images/triangle.svg" alt=""></li>
+            <li class="towD-shape">Rectangle <img src="../../images/rectangle.svg" alt=""></li>
+          </ul>
+        </div>
+        <div class="threeD">
+          <h1>3D Shapes</h1>
+
+          <ul class="threeD-list">
+            <li class="threeD-shape">Cube <img src="../../images/cube.svg" alt=""></li>
+            <li class="threeD-shape">Sphere <img src="../../images/sphere.svg" alt=""></li>
+            <li class="threeD-shape">Pyramid <img src="../../images/pyramid.svg" alt=""></li>
+            <li class="threeD-shape">Cuboid <img src="../../images/cuboid.svg" alt=""></li>
+          </ul>
+        </div>
+      </div>
+      <div class="towD-input-box">
+        <label for="width">shape width</label>
+        <input type="text" placeholder="width" id="width" />
+        <label for="height">shape height</label>
+        <input type="text" placeholder="height" id="height" />
+      </div>
+    </main>
+    <div class="overlayer"></div>
+  </body>
+</html>
+
+<!-- # -->

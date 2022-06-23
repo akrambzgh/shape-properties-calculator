@@ -1,0 +1,24 @@
+{
+  "name": "shape-properties-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass app/src/scss/main.scss app/public/dist/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrambzgh/shape-properties-calcula.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akrambzgh/shape-properties-calcula/issues"
+  },
+  "homepage": "https://github.com/akrambzgh/shape-properties-calcula#readme",
+  "dependencies": {
+    "dart-sass": "^1.25.0",
+    "sass": "^1.52.3"
+  }
+}
