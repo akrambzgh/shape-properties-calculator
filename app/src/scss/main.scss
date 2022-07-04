@@ -33,14 +33,38 @@ ul {
   list-style: none;
 }
 
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
 button,
 input {
   outline: none;
+  background: none;
+  border: 0;
 }
 
 button:focus,
 input:focus {
   outline: none;
+}
+
+.overlayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+  &.show {
+    opacity: 0.8;
+    visibility: visible;
+  }
 }
 
 @mixin flex($js, $al, $fd) {
@@ -49,7 +73,15 @@ input:focus {
   align-items: $al;
   flex-direction: $fd;
 }
+
+@mixin largeScreen() {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
 main {
+  position: relative;
   width: 80%;
   margin-inline: auto;
   background-color: #3ab0ff;
@@ -63,24 +95,40 @@ main {
     .towD,
     .threeD {
       position: relative;
-      h1 {
-        font-size: 22px;
-        font-weight: bolder;
-        letter-spacing: 1.5px;
-        color: #f9f2ed;
-        padding: 8px;
-        border-radius: 10px;
-        background-color: #f87474;
+      .head {
         cursor: pointer;
+        user-select: none;
+        h1 {
+          font-size: 22px;
+          font-weight: bolder;
+          letter-spacing: 1.5px;
+          color: #f9f2ed;
+          display: inline-block;
+          padding: 8px;
+          border-radius: 10px;
+          background-color: #f87474;
+        }
+        button {
+          background-color: #f87474;
+          padding: 8px;
+          border-radius: 10px;
+        }
       }
       ul {
         background-color: #ffb562;
         border-radius: 10px;
         margin-top: 10px;
+        margin-left: -25%;
         width: 150%;
         padding-block: 10px;
         @include flex(center, flex-start, column);
+        opacity: 0;
+        visibility: hidden;
         transition: 300ms;
+        &.show {
+          opacity: 1;
+          visibility: visible;
+        }
         li {
           font-size: 18px;
           font-weight: 400;
@@ -90,9 +138,11 @@ main {
           border-bottom: 1px solid #f9f2ed;
           padding: 10px;
           cursor: pointer;
+          user-select: none;
           @include flex(space-between, center, row);
           img {
-            justify-content: flex-end;
+            width: 30px;
+            height: 30px;
           }
           &:last-child {
             padding-bottom: 0;
@@ -109,8 +159,8 @@ main {
     position: absolute;
     left: 50%;
     top: 50%;
-    z-index: 3;
     transform: translate(-50%, -50%);
+    z-index: 4;
     background-color: #f9f2ed;
     border-radius: 15px;
     width: 500px;
@@ -122,6 +172,30 @@ main {
     visibility: hidden;
     transition: 300ms;
 
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    button.close-input-button {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #3ab0ff;
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    button + img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 20px;
+      width: 100px;
+      height: 100px;
+    }
     label {
       margin-bottom: 10px;
       font-size: 18px;
@@ -150,16 +224,111 @@ main {
         font-weight: 400;
       }
     }
+    button.submit {
+      width: calc(100% - 44px);
+      padding-block: 10px;
+      background-color: #1589d6;
+      font-size: 18px;
+      font-weight: 400;
+      color: white;
+      letter-spacing: 1px;
+      border-radius: 30px;
+      position: absolute;
+      z-index: 5;
+      bottom: 30px;
+    }
   }
 }
-.overlayer {
+.alert {
+  background-color: #f87474;
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
   opacity: 0;
   visibility: hidden;
   transition: 300ms;
+  @include largeScreen() {
+    width: 50%;
+  }
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  h3 {
+    color: #f9f2ed;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  span {
+    color: #f9f2ed;
+  }
+}
+
+.towD-input-and-labels {
+  display: none;
+}
+.calculation-result {
+  background-color: #1589d6;
+  position: absolute;
+  left: 25%;
+  top: calc(00% + 100px);
+  z-index: 6;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+  @include largeScreen() {
+    width: 50%;
+  }
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    animation: slide-top 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate
+      forwards;
+    @keyframes slide-top {
+      100% {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  h1 {
+    color: #f9f2ed;
+    letter-spacing: 1px;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #f9f2ed;
+  }
+}
+
+.close-result,
+.close-alert {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #f9f2ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

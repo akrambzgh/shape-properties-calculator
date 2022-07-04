@@ -23,33 +23,93 @@
     <main>
       <div class="shapes-lists">
         <div class="towD">
-          <h1>2D Shapes</h1>
+          <div class="head">
+            <h1>2D Shapes</h1>
+            <button class="close-towD-button">
+              <img src="../../images/close.svg" alt="" />
+            </button>
+          </div>
           <ul class="towD-list">
-            <li class="towD-shape">Square <img src="../../images/square.svg" alt=""></li>
-            <li class="towD-shape">Circle <img src="../../images/circle.svg" alt=""></li>
-            <li class="towD-shape">Triangle <img src="../../images/triangle.svg" alt=""></li>
-            <li class="towD-shape">Rectangle <img src="../../images/rectangle.svg" alt=""></li>
+            <li class="towD-shape" data-towD="square">
+              Square <img src="../../images/2D-shapes/square.svg" alt="" />
+            </li>
+            <li class="towD-shape" data-towD="circle">
+              Circle <img src="../../images/2D-shapes/circle.svg" alt="" />
+            </li>
+            <li class="towD-shape" data-towD="triangle">
+              Triangle <img src="../../images/2D-shapes/triangle.svg" alt="" />
+            </li>
+            <li class="towD-shape" data-towD="rectangle">
+              Rectangle
+              <img src="../../images/2D-shapes/rectangle.svg" alt="" />
+            </li>
           </ul>
         </div>
         <div class="threeD">
-          <h1>3D Shapes</h1>
-
+          <div class="head">
+            <h1>3D Shapes</h1>
+            <button class="close-threeD-button">
+              <img src="../../images/close.svg" alt="" />
+            </button>
+          </div>
           <ul class="threeD-list">
-            <li class="threeD-shape">Cube <img src="../../images/cube.svg" alt=""></li>
-            <li class="threeD-shape">Sphere <img src="../../images/sphere.svg" alt=""></li>
-            <li class="threeD-shape">Pyramid <img src="../../images/pyramid.svg" alt=""></li>
-            <li class="threeD-shape">Cuboid <img src="../../images/cuboid.svg" alt=""></li>
+            <li class="threeD-shape">
+              Cube <img src="../../images/3D-shapes/cube.svg" alt="" />
+            </li>
+            <li class="threeD-shape">
+              Sphere <img src="../../images/3D-shapes/sphere.svg" alt="" />
+            </li>
+            <li class="threeD-shape">
+              Pyramid <img src="../../images/3D-shapes/pyramid.svg" alt="" />
+            </li>
+            <li class="threeD-shape">
+              Cuboid <img src="../../images/3D-shapes/cuboid.svg" alt="" />
+            </li>
           </ul>
         </div>
       </div>
       <div class="towD-input-box">
-        <label for="width">shape width</label>
-        <input type="text" placeholder="width" id="width" />
-        <label for="height">shape height</label>
-        <input type="text" placeholder="height" id="height" />
+        <button class="close-input-button">
+          <img class="close-img" src="../../images/close.svg" alt="" />
+        </button>
+        <img
+          class="towD-shape-image"
+          src="../../images/2D-shapes/square.svg"
+          alt=""
+        />
+        <button class="submit">CALC</button>
       </div>
     </main>
     <div class="overlayer"></div>
+    <div class="towD-input-and-labels">
+      <label for="sides-lenght" class="sides-lenght">side lenght</label>
+      <input type="text" placeholder="side lenght" id="sides-lenght" />
+      <label for="width" class="width">shape width</label>
+      <input type="text" placeholder="width" id="width" />
+      <label for="height" class="height">shape height</label>
+      <input type="text" placeholder="height" id="height" />
+      <label for="diameter" class="diameter">Diameter</label>
+      <input type="text" placeholder="diameter" id="diameter" />
+      <label for="base-lenght" class="base-lenght">base lenght</label>
+      <input type="text" placeholder="base lenght" id="base-lenght" />
+      <label for="traingle-lenght" class="traingle-height">height lenght</label>
+      <input type="text" placeholder="height lenght" id="traingle-height" />
+    </div>
+    <div class="alert">
+      <h3>problem encountered!</h3>
+      <span class="error-text">something that make my calc pro</span>
+      <button class="close-alert">
+        <img src="../../images/close.svg" alt="" />
+      </button>
+    </div>
+    <div class="calculation-result">
+      <h1>results</h1>
+      <h3 class="circumference"></h3>
+      <h3 class="area"></h3>
+      <button class="close-result">
+        <img src="../../images/close.svg" alt="" />
+      </button>
+    </div>
   </body>
 </html>
 

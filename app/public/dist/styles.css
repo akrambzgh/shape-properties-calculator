@@ -33,9 +33,16 @@ ul {
   list-style: none;
 }
 
+button {
+  cursor: pointer;
+  user-select: none;
+}
+
 button,
 input {
   outline: none;
+  background: none;
+  border: 0;
 }
 
 button:focus,
@@ -43,7 +50,25 @@ input:focus {
   outline: none;
 }
 
+.overlayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+}
+.overlayer.show {
+  opacity: 0.8;
+  visibility: visible;
+}
+
 main {
+  position: relative;
   width: 80%;
   margin-inline: auto;
   background-color: #3ab0ff;
@@ -63,29 +88,48 @@ main .shapes-lists .towD,
 main .shapes-lists .threeD {
   position: relative;
 }
-main .shapes-lists .towD h1,
-main .shapes-lists .threeD h1 {
+main .shapes-lists .towD .head,
+main .shapes-lists .threeD .head {
+  cursor: pointer;
+  user-select: none;
+}
+main .shapes-lists .towD .head h1,
+main .shapes-lists .threeD .head h1 {
   font-size: 22px;
   font-weight: bolder;
   letter-spacing: 1.5px;
   color: #f9f2ed;
+  display: inline-block;
   padding: 8px;
   border-radius: 10px;
   background-color: #f87474;
-  cursor: pointer;
+}
+main .shapes-lists .towD .head button,
+main .shapes-lists .threeD .head button {
+  background-color: #f87474;
+  padding: 8px;
+  border-radius: 10px;
 }
 main .shapes-lists .towD ul,
 main .shapes-lists .threeD ul {
   background-color: #ffb562;
   border-radius: 10px;
   margin-top: 10px;
+  margin-left: -25%;
   width: 150%;
   padding-block: 10px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
   transition: 300ms;
+}
+main .shapes-lists .towD ul.show,
+main .shapes-lists .threeD ul.show {
+  opacity: 1;
+  visibility: visible;
 }
 main .shapes-lists .towD ul li,
 main .shapes-lists .threeD ul li {
@@ -97,6 +141,7 @@ main .shapes-lists .threeD ul li {
   border-bottom: 1px solid #f9f2ed;
   padding: 10px;
   cursor: pointer;
+  user-select: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,7 +149,8 @@ main .shapes-lists .threeD ul li {
 }
 main .shapes-lists .towD ul li img,
 main .shapes-lists .threeD ul li img {
-  justify-content: flex-end;
+  width: 30px;
+  height: 30px;
 }
 main .shapes-lists .towD ul li:last-child,
 main .shapes-lists .threeD ul li:last-child {
@@ -119,8 +165,8 @@ main .towD-input-box {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 3;
   transform: translate(-50%, -50%);
+  z-index: 4;
   background-color: #f9f2ed;
   border-radius: 15px;
   width: 500px;
@@ -134,6 +180,29 @@ main .towD-input-box {
   opacity: 0;
   visibility: hidden;
   transition: 300ms;
+}
+main .towD-input-box.show {
+  opacity: 1;
+  visibility: visible;
+}
+main .towD-input-box button.close-input-button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #3ab0ff;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 5;
+}
+main .towD-input-box button + img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  width: 100px;
+  height: 100px;
 }
 main .towD-input-box label {
   margin-bottom: 10px;
@@ -163,17 +232,116 @@ main .towD-input-box input::placeholder {
   text-transform: uppercase;
   font-weight: 400;
 }
-
-.overlayer {
+main .towD-input-box button.submit {
+  width: calc(100% - 44px);
+  padding-block: 10px;
+  background-color: #1589d6;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 1px;
+  border-radius: 30px;
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
+  z-index: 5;
+  bottom: 30px;
+}
+
+.alert {
+  background-color: #f87474;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 6;
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
   opacity: 0;
   visibility: hidden;
   transition: 300ms;
+}
+@media (min-width: 992px) {
+  .alert {
+    width: 50%;
+  }
+}
+.alert.show {
+  opacity: 1;
+  visibility: visible;
+}
+.alert h3 {
+  color: #f9f2ed;
+  letter-spacing: 1px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.alert span {
+  color: #f9f2ed;
+}
+
+.towD-input-and-labels {
+  display: none;
+}
+
+.calculation-result {
+  background-color: #1589d6;
+  position: absolute;
+  left: 25%;
+  top: calc(0% + 100px);
+  z-index: 6;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 15px 5px #ccc;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+}
+@media (min-width: 992px) {
+  .calculation-result {
+    width: 50%;
+  }
+}
+.calculation-result.show {
+  opacity: 1;
+  visibility: visible;
+  animation: slide-top 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) alternate forwards;
+}
+@keyframes slide-top {
+  100% {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.calculation-result h1 {
+  color: #f9f2ed;
+  letter-spacing: 1px;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.calculation-result h3 {
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #f9f2ed;
+}
+
+.close-result,
+.close-alert {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #f9f2ed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
