@@ -30,16 +30,16 @@
             </button>
           </div>
           <ul class="towD-list">
-            <li class="towD-shape" data-towD="square">
+            <li class="towD-shape shape-item" data-shape="square">
               Square <img src="../../images/2D-shapes/square.svg" alt="" />
             </li>
-            <li class="towD-shape" data-towD="circle">
+            <li class="towD-shape shape-item" data-shape="circle">
               Circle <img src="../../images/2D-shapes/circle.svg" alt="" />
             </li>
-            <li class="towD-shape" data-towD="triangle">
+            <li class="towD-shape shape-item" data-shape="triangle">
               Triangle <img src="../../images/2D-shapes/triangle.svg" alt="" />
             </li>
-            <li class="towD-shape" data-towD="rectangle">
+            <li class="towD-shape shape-item" data-shape="rectangle">
               Rectangle
               <img src="../../images/2D-shapes/rectangle.svg" alt="" />
             </li>
@@ -53,16 +53,16 @@
             </button>
           </div>
           <ul class="threeD-list">
-            <li class="threeD-shape">
+            <li class="threeD-shape shape-item" data-shape="cube">
               Cube <img src="../../images/3D-shapes/cube.svg" alt="" />
             </li>
-            <li class="threeD-shape">
+            <li class="threeD-shape shape-item" data-shape="sphere">
               Sphere <img src="../../images/3D-shapes/sphere.svg" alt="" />
             </li>
-            <li class="threeD-shape">
+            <li class="threeD-shape shape-item" data-shape="pyramid">
               Pyramid <img src="../../images/3D-shapes/pyramid.svg" alt="" />
             </li>
-            <li class="threeD-shape">
+            <li class="threeD-shape shape-item" data-shape="cuboid">
               Cuboid <img src="../../images/3D-shapes/cuboid.svg" alt="" />
             </li>
           </ul>
@@ -79,21 +79,95 @@
         />
         <button class="submit">CALC</button>
       </div>
+      <div class="threeD-input-box">
+        <button class="close-input-button">
+          <img class="close-img" src="../../images/close.svg" alt="" />
+        </button>
+        <img
+          class="threeD-shape-image"
+          src="../../images/3D-shapes/cube.svg"
+          alt=""
+        />
+        <button class="submit">CALC</button>
+      </div>
     </main>
     <div class="overlayer"></div>
-    <div class="towD-input-and-labels">
-      <label for="sides-lenght" class="sides-lenght">side lenght</label>
-      <input type="text" placeholder="side lenght" id="sides-lenght" />
-      <label for="width" class="width">shape width</label>
-      <input type="text" placeholder="width" id="width" />
-      <label for="height" class="height">shape height</label>
-      <input type="text" placeholder="height" id="height" />
-      <label for="diameter" class="diameter">Diameter</label>
-      <input type="text" placeholder="diameter" id="diameter" />
-      <label for="base-lenght" class="base-lenght">base lenght</label>
-      <input type="text" placeholder="base lenght" id="base-lenght" />
-      <label for="traingle-lenght" class="traingle-height">height lenght</label>
-      <input type="text" placeholder="height lenght" id="traingle-height" />
+    <div class="inputs">
+      <label class="input">
+        <input
+          class="input__field"
+          id="sides-lenght"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">side lenght</span>
+      </label>
+      <label class="input">
+        <input class="input__field" id="width" type="text" placeholder=" " />
+        <span class="input__label">Width</span>
+      </label>
+      <label class="input">
+        <input class="input__field" id="height" type="text" placeholder=" " />
+        <span class="input__label">Height</span>
+      </label>
+      <label class="input">
+        <input class="input__field" id="diameter" type="text" placeholder=" " />
+        <span class="input__label">Diameter</span>
+      </label>
+      <label class="input">
+        <input
+          class="input__field"
+          id="base-lenght"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">Base Lenght</span>
+      </label>
+      <label class="input">
+        <input
+          class="input__field"
+          id="traingle-height"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">Height Lenght</span>
+      </label>
+      <label class="input">
+        <input
+          class="input__field"
+          id="cube-sides-lenght"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">sides lenght</span>
+      </label>
+      <label class="input">
+        <input
+          class="input__field"
+          id="cube-mass"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">mass</span>
+      </label>
+      <label class="input">
+        <input
+          class="input__field"
+          id="shpere-diameter"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">diameter lenght</span>
+      </label>
+      <label class="input">
+        <input
+          class="input__field"
+          id="sphere-mass"
+          type="text"
+          placeholder=" "
+        />
+        <span class="input__label">mass</span>
+      </label>
     </div>
     <div class="alert">
       <h3>problem encountered!</h3>
@@ -106,6 +180,8 @@
       <h1>results</h1>
       <h3 class="circumference"></h3>
       <h3 class="area"></h3>
+      <h3 class="volume"></h3>
+      <h3 class="density"></h3>
       <button class="close-result">
         <img src="../../images/close.svg" alt="" />
       </button>

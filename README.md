@@ -2,7 +2,7 @@
 
 ## _I_: Prepare For The Project
 
-Hello! in this project I make a web app that calculates different 2D and 3D shapes properties like area and Circumference and the volume and volumetric mass of the shape
+Hello! in this project I make a web app that calculates different 2D and 3D shapes properties like area and Circumference and the volume and density and mass of the shape
 
 ---
 
@@ -89,3 +89,5 @@ I use the 4 most used shapes and they are: Square, Circle, Triangle, Rectangle a
     </tr>
   </tbody>
 </table>
+
+## _III_: 3D Shapes

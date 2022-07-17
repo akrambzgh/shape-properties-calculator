@@ -1,3 +1,9 @@
+:root {
+  --color-light: white;
+  --color-dark: #212121;
+  --color-signal: #fab700;
+}
+
 html {
   font-size: 100%;
   line-height: 1.4;
@@ -16,7 +22,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto Mono", monospace;
-  background-color: #f9f2ed;
+  background-color: var(--color-light);
 }
 
 h1,
@@ -70,23 +76,39 @@ input:focus {
 main {
   position: relative;
   width: 80%;
-  margin-inline: auto;
-  background-color: #3ab0ff;
   min-height: 96vh;
+  margin-inline: auto;
+  background-color: var(--color-signal);
   margin-top: 2vh;
   padding: 15px;
-  border-radius: 30px;
-  box-shadow: 10px 5px 5px #1589d6;
+  border-radius: 4px;
+  box-shadow: 10px 10px var(--color-dark);
 }
 main .shapes-lists {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 15px;
+}
+@media (min-width: 992px) {
+  main .shapes-lists {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
 }
 main .shapes-lists .towD,
 main .shapes-lists .threeD {
   position: relative;
+  margin-bottom: 20px;
+}
+@media (min-width: 992px) {
+  main .shapes-lists .towD,
+main .shapes-lists .threeD {
+    margin-bottom: 0;
+  }
 }
 main .shapes-lists .towD .head,
 main .shapes-lists .threeD .head {
@@ -98,21 +120,21 @@ main .shapes-lists .threeD .head h1 {
   font-size: 22px;
   font-weight: bolder;
   letter-spacing: 1.5px;
-  color: #f9f2ed;
+  color: var(--color-light);
   display: inline-block;
   padding: 8px;
   border-radius: 10px;
-  background-color: #f87474;
+  background-color: var(--color-dark);
 }
 main .shapes-lists .towD .head button,
 main .shapes-lists .threeD .head button {
-  background-color: #f87474;
+  background-color: var(--color-dark);
   padding: 8px;
   border-radius: 10px;
 }
 main .shapes-lists .towD ul,
 main .shapes-lists .threeD ul {
-  background-color: #ffb562;
+  background-color: var(--color-light);
   border-radius: 10px;
   margin-top: 10px;
   margin-left: -25%;
@@ -135,10 +157,10 @@ main .shapes-lists .towD ul li,
 main .shapes-lists .threeD ul li {
   font-size: 18px;
   font-weight: 400;
-  color: white;
+  color: var(--color-dark);
   width: 100%;
   padding-left: 10px;
-  border-bottom: 1px solid #f9f2ed;
+  border-bottom: 1px solid var(--color-dark);
   padding: 10px;
   cursor: pointer;
   user-select: none;
@@ -161,102 +183,145 @@ main .shapes-lists .towD ul li:first-child,
 main .shapes-lists .threeD ul li:first-child {
   padding-top: 0;
 }
-main .towD-input-box {
+main .towD-input-box,
+main .threeD-input-box {
   position: absolute;
-  left: 50%;
+  left: 2%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   z-index: 4;
-  background-color: #f9f2ed;
-  border-radius: 15px;
-  width: 500px;
-  height: 500px;
+  box-shadow: 10px 10px var(--color-signal);
+  background-color: var(--color-light);
+  border-radius: 4px;
+  width: 94%;
+  height: 700px;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  border: 3px solid #f87474;
+  border: 3px solid var(--color-dark);
   opacity: 0;
   visibility: hidden;
   transition: 300ms;
 }
-main .towD-input-box.show {
+@media (min-width: 992px) {
+  main .towD-input-box,
+main .threeD-input-box {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+  }
+}
+main .towD-input-box.show,
+main .threeD-input-box.show {
   opacity: 1;
   visibility: visible;
 }
-main .towD-input-box button.close-input-button {
+main .towD-input-box .input,
+main .threeD-input-box .input {
+  position: relative;
+  cursor: text;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  user-select: none;
+}
+main .towD-input-box .input__label,
+main .threeD-input-box .input__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.375rem 0.25rem;
+  margin: calc(0.375rem + 3px) 0.25rem;
+  white-space: nowrap;
+  transform: translate(0, -3px);
+  transform-origin: 0 0;
+  background: var(--color-light);
+  transition: transform 120ms ease-in;
+  font-weight: bold;
+  color: var(--color-dark);
+  line-height: 1.2;
+}
+main .towD-input-box .input__field,
+main .threeD-input-box .input__field {
+  display: block;
+  width: 100%;
+  border: 3px solid var(--color-dark);
+  padding: 15px 0.75rem 0.5rem;
+  background: transparent;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: 600;
+  user-select: none;
+}
+main .towD-input-box .input__field:focus + .input__label,
+main .towD-input-box .input__field:not(:placeholder-shown) + .input__label,
+main .threeD-input-box .input__field:focus + .input__label,
+main .threeD-input-box .input__field:not(:placeholder-shown) + .input__label {
+  transform: translate(0.25rem, -65%);
+  color: var(--color-signal);
+}
+main .towD-input-box button.close-input-button,
+main .threeD-input-box button.close-input-button {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background-color: #3ab0ff;
-  position: fixed;
+  background-color: var(--color-dark);
+  position: absolute;
   right: 10px;
   top: 10px;
-  cursor: pointer;
   z-index: 5;
+  cursor: pointer;
 }
-main .towD-input-box button + img {
+main .towD-input-box img.towD-shape-image,
+main .towD-input-box img.threeD-shape-image,
+main .threeD-input-box img.towD-shape-image,
+main .threeD-input-box img.threeD-shape-image {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   top: 20px;
   width: 100px;
   height: 100px;
+  user-select: none;
 }
-main .towD-input-box label {
+main .towD-input-box label,
+main .threeD-input-box label {
   margin-bottom: 10px;
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 400;
-  color: #3ab0ff;
+  color: var(--color-signal);
 }
-main .towD-input-box input {
-  width: 100%;
-  border-radius: 10px;
-  background: none;
-  border: 2px solid #ffb562;
-  padding: 13px;
-  display: block;
-  margin-bottom: 20px;
-  color: #ffb562;
-  font-size: 18px;
-  font-weight: 400;
-  caret-color: #ffb562;
-}
-main .towD-input-box input::placeholder {
-  color: #ffb562;
-  font-size: 18px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-main .towD-input-box button.submit {
+main .towD-input-box button.submit,
+main .threeD-input-box button.submit {
   width: calc(100% - 44px);
   padding-block: 10px;
-  background-color: #1589d6;
+  background-color: var(--color-dark);
   font-size: 18px;
   font-weight: 400;
   color: white;
   letter-spacing: 1px;
-  border-radius: 30px;
+  border-radius: 4px;
   position: absolute;
   z-index: 5;
   bottom: 30px;
 }
 
 .alert {
-  background-color: #f87474;
+  background-color: var(--color-dark);
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 6;
-  width: 60%;
+  width: 90%;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 15px 5px #ccc;
   opacity: 0;
   visibility: hidden;
   transition: 300ms;
@@ -280,20 +345,20 @@ main .towD-input-box button.submit {
   color: #f9f2ed;
 }
 
-.towD-input-and-labels {
+.inputs {
   display: none;
 }
 
 .calculation-result {
-  background-color: #1589d6;
+  background-color: var(--color-signal);
   position: absolute;
-  left: 25%;
+  left: 1%;
   top: calc(0% + 100px);
   z-index: 6;
-  width: 80%;
+  width: 98%;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 15px 5px #ccc;
+  box-shadow: 10px 10px var(--color-dark);
   opacity: 0;
   visibility: hidden;
   transition: 300ms;
@@ -301,6 +366,7 @@ main .towD-input-box button.submit {
 @media (min-width: 992px) {
   .calculation-result {
     width: 50%;
+    left: 25%;
   }
 }
 .calculation-result.show {
@@ -315,7 +381,7 @@ main .towD-input-box button.submit {
   }
 }
 .calculation-result h1 {
-  color: #f9f2ed;
+  color: var(--color-dark);
   letter-spacing: 1px;
   font-size: 30px;
   text-align: center;
@@ -327,7 +393,7 @@ main .towD-input-box button.submit {
   line-height: 1.6;
   font-weight: 400;
   letter-spacing: 1px;
-  color: #f9f2ed;
+  color: var(--color-dark);
 }
 
 .close-result,
@@ -338,7 +404,7 @@ main .towD-input-box button.submit {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  border: 2px solid #f9f2ed;
+  border: 2px solid var(--color-light);
   display: flex;
   justify-content: center;
   align-items: center;
