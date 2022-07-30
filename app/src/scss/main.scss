@@ -261,7 +261,7 @@ main {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      top: 20px;
+      top: 0;
       width: 100px;
       height: 100px;
       user-select: none;
@@ -285,7 +285,7 @@ main {
       border-radius: 4px;
       position: absolute;
       z-index: 5;
-      bottom: 30px;
+      bottom: 25px;
     }
   }
 }

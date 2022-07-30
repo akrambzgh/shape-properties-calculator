@@ -283,7 +283,7 @@ main .threeD-input-box img.threeD-shape-image {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 20px;
+  top: 0;
   width: 100px;
   height: 100px;
   user-select: none;
@@ -309,7 +309,7 @@ main .threeD-input-box button.submit {
   border-radius: 4px;
   position: absolute;
   z-index: 5;
-  bottom: 30px;
+  bottom: 25px;
 }
 
 .alert {
