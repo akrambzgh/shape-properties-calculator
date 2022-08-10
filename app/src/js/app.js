@@ -38,7 +38,6 @@ let closeCalculationResultButton = document.querySelector(".close-result");
 let allInputs = document.querySelectorAll(".input");
 const towDCalcButton = document.querySelector(".towD-input-box .submit");
 const threeDCalcButton = document.querySelector(".threeD-input-box .submit");
-
 // towD Elements
 var { towDShapes, towDInputBox, towDShapeImage } = towDElements();
 
@@ -133,11 +132,6 @@ allShapes.forEach((shape) => {
   shape.addEventListener("click", (e) => {
     chosedShape = e.currentTarget.getAttribute("data-shape");
     overlayer.classList.add("show");
-    allInputs.forEach((input) => {
-      let inputsParent = document.querySelector(".inputs");
-      inputsParent.appendChild(input);
-      input.value = "";
-    });
     if (shape.classList.contains("threeD-shape")) {
       threeDInputBox.classList.add("show");
       threeDShapeImage.src = `../../images/3D-shapes/${e.currentTarget.getAttribute(
@@ -237,12 +231,14 @@ function circleFun() {
     }
   });
 }
-
 function triangleFun() {
   triangleBaseLenghtInput.value = "";
   triangleHeightLenghtInput.value = "";
   towDInputBox.append(triangleBaseLenghtInput.parentElement);
+  triangleBaseLenghtInput.parentElement.innerHTML += idk;
   towDInputBox.append(triangleHeightLenghtInput.parentElement);
+  triangleHeightLenghtInput.parentElement.innerHTML += idk;
+
   towDCalcButton.addEventListener("click", () => {
     if (
       triangleHeightLenghtInput.value === "" &&
@@ -576,5 +572,3 @@ function calcFun() {
 }
 towDCalcButton.addEventListener("click", calcFun);
 threeDCalcButton.addEventListener("click", calcFun);
-
-console.log(Math.sqrt(5));

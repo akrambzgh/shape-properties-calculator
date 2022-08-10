@@ -52,14 +52,16 @@ button {
 }
 
 button,
-input {
+input,
+select {
   outline: none;
   background: none;
   border: 0;
 }
 
 button:focus,
-input:focus {
+input:focus,
+select:focus {
   outline: none;
 }
 
@@ -196,7 +198,7 @@ main {
       height: 500px;
     }
     padding: 20px;
-    @include flex(center, flex-start, column);
+    @include flex(space-evenly, flex-start, column);
     border: 3px solid $color-text;
     opacity: 0;
     visibility: hidden;
@@ -213,6 +215,9 @@ main {
       display: block;
       margin-bottom: 20px;
       user-select: none;
+      select {
+        position: absolute;
+      }
     }
     .input__label {
       position: absolute;
